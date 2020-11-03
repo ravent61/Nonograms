@@ -16,7 +16,9 @@ The nonogram app that you will design for this assignment will be very similar t
 
 4. Your app will contain a pre-coded library of puzzles to solve. Your submitted code must include at least 4 unique puzzles. The UI must provide buttons to go to the next puzzle, to go to the previous puzzle, and to jump to a random puzzle. The "previous" button should not cause an uncaught exception if the user accidentally presses it on the first puzzle. Similarly, the "next" button should not cause an uncaught exception if the user accidentally presses it on the last puzzle.
 
-5. Your app must support arbitrary-sized boards with different widths and heights. To demonstrate this functionality, your pre-coded library of puzzles must include puzzles of at least two different sizes.
+5. Your app must clearly display which puzzle in the library is currently active, and how many puzzles are in the library in total.
+
+6. Your app must support arbitrary-sized boards with different widths and heights. To demonstrate this functionality, your pre-coded library of puzzles must include puzzles of at least two different sizes.
 
 This assignment is unique because it has a manually-graded portion *and* an autograded portion. The autograded portion verifies that your *model* is correct, but does not check your *controller* or *view*. The controller and view will be manually graded by the COMP 301 LAs after the assignment due date. They will run your application and try playing a few games using your user interface! This means you won't get immediate feedback about your controller and view implementations.
 
