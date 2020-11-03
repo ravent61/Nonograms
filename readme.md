@@ -6,28 +6,30 @@ In this assignment, you will use the **model-view-controller** design pattern to
 
 If you've never heard of nonograms before, I highly suggest starting by checking out [the nonograms Wikipedia page](https://en.wikipedia.org/wiki/Nonogram). After you do that, [try solving a few nonogram puzzles](https://www.puzzle-nonograms.com/) yourself to make sure you've got the hang of it.
 
-The nonogram app that you will design for this assignment will be very similar to the nonograms implementation on the website linked above. In particular, your implementation must have the following features for full credit:
+The nonogram app that you will design will be very similar to the nonograms implementation on the website linked above. You are encouraged to be creative with regard to the visual design of your implementation. Feel free to theme your user interface, move the components around in different locations, add new features, or make other significant changes to the look and feel of your app. However, your implementation must have the following features at a bare minimum for full credit:
 
-1. If the user left-clicks on a cell, that cell becomes *shaded*. But, if they right-click on a cell, that cell becomes *eliminated*---just like the reference implementation. There must be a visual difference between a *shaded* and an *eliminated* cell. A cell cannot be both *shaded* and *eliminated*.
+1. If the user left-clicks on a cell, that cell becomes *shaded*. But, if they right-click on a cell, that cell becomes *eliminated*---just like the reference implementation. There must be a visual difference between a *shaded* and an *eliminated* cell. A cell cannot be both *shaded* and *eliminated*. Cells must be clearly marked, so the user can tell which cell they are selecting.
 
-2. After each move, your app must check to see if the user solved the puzzle. If so, the UI must update to let the user know that they completed the puzzle. The puzzle is "solved" if the shaded squares match the clues. Non-shaded squares do not need to be labeled "eliminated" in order to solve the puzzle.
+2. If the user left-clicks on an already-shaded cell, that cell should return to a blank state. If the user right-clicks on an already-eliminated cell, that cell should return to a blank state.
 
-3. The UI must include a "reset" button that will clear the board and let the user start over from a blank board.
+3. After each move, your app must check to see if the user solved the puzzle. If so, the UI must visually update to let the user know that they completed the puzzle. The puzzle is "solved" if the shaded squares match the clues. Non-shaded squares do not need to be labeled "eliminated" in order to solve the puzzle.
 
-4. Your app will contain a pre-coded library of puzzles to solve. Your submitted code must include at least 4 unique puzzles. The UI must provide buttons to go to the next puzzle, to go to the previous puzzle, and to jump to a random puzzle. The "previous" button should not cause an uncaught exception if the user accidentally presses it on the first puzzle. Similarly, the "next" button should not cause an uncaught exception if the user accidentally presses it on the last puzzle.
+4. The UI must include a clearly visible and labeled "reset" button that will clear all the cells in the board and let the user start over from a blank state.
 
-5. Your app must clearly display which puzzle in the library is currently active, and how many puzzles are in the library in total.
+5. The starter code contains a pre-coded library of 5 puzzles to solve. The UI must provide clearly visible and labeled buttons to go to the next puzzle, to go to the previous puzzle, and to jump to a random puzzle. The "previous" button should not cause an uncaught exception if the user accidentally presses it on the first puzzle. Similarly, the "next" button should not cause an uncaught exception if the user accidentally presses it on the last puzzle.
 
-6. Your app must support arbitrary-sized boards with different widths and heights. To demonstrate this functionality, your pre-coded library of puzzles must include puzzles of at least two different sizes.
+6. The library of puzzles is a `List`, which means the puzzles are indexed. Your app must clearly display the index of the active puzzle in the library and how many puzzles are in the library in total. The displayed index should start from one, not zero. In other words, the first puzzle in the `List` (at index 0) should be displayed as "puzzle 1 of 5" to the user.
 
-This assignment is unique because it has a manually-graded portion *and* an autograded portion. The autograded portion verifies that your *model* is correct, but does not check your *controller* or *view*. The controller and view will be manually graded by the COMP 301 LAs after the assignment due date. They will run your application and try playing a few games using your user interface! This means you won't get immediate feedback about your controller and view implementations.
+7. Your app must support arbitrary-sized boards with different widths and heights. To demonstrate this functionality, the provided pre-coded library of puzzles includes puzzles of at least two different sizes.
+
+This assignment is unique because it has a manually-graded portion *and* an autograded portion. The autograded portion verifies that your *model* is correct, but does not check your *controller* or *view*. The controller and view will be manually graded by a COMP 301 learning assistant after the assignment due date. The LA will run your application and try playing a few games using your user interface! Your grade for that portion of the assignment will be based off of whether the LA encounters UI bugs. This means you won't get immediate feedback about your controller and view implementations.
 
 
 ## Starter code
 
-Once you're familiar with the game, take a look at the starter code defined in the repository. Three packages have been created to help you organize your code according to the model-view-controller pattern. In these packages, a few starter interfaces and classes have been defined to help you structure your app.
+Once you're familiar with nonograms, take a look at the starter code defined in the repository. Three packages have been created to help you organize your code according to the model-view-controller pattern. In these packages, a few starter interfaces and classes have been defined to help you structure your app.
 
-**It is not strictly necessary to use all the provided starter interfaces.** Most of them are just there to give your app some structure and help you plan your code. If you would rather come up with your own design, there are a few rules that your code must follow so that your code can be autograded correctly. First, you **must** provide a `ModelImpl` and `CluesImpl` class as specified below. Second, running the `main()` method of the provided `Main` class **must** launch your GUI (this is how the LAs will launch your app for manual grading). Other than these two requirements, you can safely ignore the rest of the provided interfaces.
+**It is not strictly necessary to use all the provided starter interfaces.** Most of them are just there to give your app some structure and help you plan your code. If you would rather come up with your own design, there are a few rules that your code must follow so that your code can be autograded correctly. First, you **must** provide a `ModelImpl` and `CluesImpl` class as specified below. Second, running the `main()` method of the provided `Main` class **must** launch your GUI (this is how the LAs will launch your app for manual grading). Other than these two requirements, you are free to safely ignore the rest of the provided interfaces.
 
 
 ## Running the application
@@ -36,7 +38,7 @@ This assignment uses Maven as a build manager, and JavaFX as a GUI library. Sinc
 
 To run the application with Maven in IntelliJ, follow these steps:
 
-1. Click the vertical "Maven" expansion tab which is on the right side of the window.
+1. Click the vertical "Maven" expansion tab which is on the right side of the IntelliJ window.
 
 2. Expand the "Plugins" folder.
 
@@ -114,7 +116,7 @@ Clues example = new CluesImpl(rowClues, colClues);
 
 A `Clues` instance represents the clues for a puzzle, but doesn't handle the state to track whether individual cells are "shaded" or "eliminated". The `Board` interface is intended to track the array of states for each cell in a puzzle. In other words, a nonogram puzzle is a combination of a `Clues` object, representing the clues for the puzzle, and a `Board` object, representing the states of the puzzle's cells.
 
-Instances of `Board` are not intended to be immutable. As the user clicks on different cells of the puzzle, the internal fields in the `Board` instance should change to reflect the new state. For example, if the user clicks on a cell to change it to be shaded, a field modification must take place inside the `Board` instance to reflect that the cell is now shaded. This can be accomplished via the `toggleCellShaded()` and `toggleCellEliminated()` methods.
+Instances of `Board` are not intended to be immutable. As the user clicks on different cells of the puzzle, the internal fields in the `Board` instance should change to reflect the new state. For example, if the user clicks on a cell to change it to be shaded, a field modification must take place inside th**e `Board` instance to reflect that the cell is now shaded. This can be accomplished via the `toggleCellShaded()` and `toggleCellEliminated()` methods.
 
 You may choose to make a `BoardImpl` class as part of your design, but it is not a requirement for this assignment.
 
