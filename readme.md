@@ -112,7 +112,7 @@ Clues example = new CluesImpl(rowClues, colClues);
 
 ### Board
 
-A `Clues` instance represents the clues for a puzzle, but doesn't handle the state to track whether individual cells are "shaded" or "eliminated". The `Board` interface is intended to track the array of states for each cell in a puzzle. In other words, a nonogram puzzle is a combination of a `Clues` interface, representing the clues for the puzzle, and a `Board` instance, representing the states of the puzzle's cells.
+A `Clues` instance represents the clues for a puzzle, but doesn't handle the state to track whether individual cells are "shaded" or "eliminated". The `Board` interface is intended to track the array of states for each cell in a puzzle. In other words, a nonogram puzzle is a combination of a `Clues` object, representing the clues for the puzzle, and a `Board` object, representing the states of the puzzle's cells.
 
 Instances of `Board` are not intended to be immutable. As the user clicks on different cells of the puzzle, the internal fields in the `Board` instance should change to reflect the new state. For example, if the user clicks on a cell to change it to be shaded, a field modification must take place inside the `Board` instance to reflect that the cell is now shaded. This can be accomplished via the `toggleCellShaded()` and `toggleCellEliminated()` methods.
 
