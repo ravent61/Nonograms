@@ -106,7 +106,7 @@ public class ModelImpl implements Model{
                     alike_cells = 0;
                 }
             }
-            System.out.println(col);
+
         }
         //for (ModelObserver observers : observers){
         //observers.update(this);
@@ -146,7 +146,7 @@ public class ModelImpl implements Model{
         }
     }
     public void toggleCellSpace(int row, int col) {
-        board[row][col] = 0;
+        board[row][col]= 0;
         for (ModelObserver observers : observers) {
             observers.update(this);
         }
