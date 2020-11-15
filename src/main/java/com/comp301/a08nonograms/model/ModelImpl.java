@@ -132,7 +132,7 @@ public class ModelImpl implements Model{
 
     @Override
     public void toggleCellShaded(int row, int col) {
-        board[row][col] = -1;
+        board[row][col] = 1;
         for (ModelObserver observers : observers){
             observers.update(this);
         }
@@ -140,7 +140,7 @@ public class ModelImpl implements Model{
 
     @Override
     public void toggleCellEliminated(int row, int col) {
-        board[row][col] = 1;
+        board[row][col] = -1;
         for (ModelObserver observers : observers) {
             observers.update(this);
         }
