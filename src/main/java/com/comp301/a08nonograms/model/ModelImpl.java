@@ -144,8 +144,11 @@ public class ModelImpl implements Model{
 
     @Override
     public void toggleCellEliminated(int row, int col) {
-        board[row][col] = -1;
-        for (ModelObserver observers : observers) {
+        if (board[row][col] == -1) {
+            board[row][col] = 0;
+        }else{
+            board[row][col] = -1;
+        }        for (ModelObserver observers : observers) {
             observers.update(this);
         }
     }
