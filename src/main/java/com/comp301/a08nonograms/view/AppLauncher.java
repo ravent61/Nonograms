@@ -79,24 +79,21 @@ public class AppLauncher extends Application {
                               @Override
                               public void handle(MouseEvent mouseEvent) {
                                   if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                                      if (!controller.isShaded(finalRow, finalCol)){
+                                      controller.toggleShaded(finalRow, finalCol);
+                                      if (controller.isShaded(finalRow, finalCol)){
                                           cell.setStyle("-fx-background-color: pink");
-                                          controller.toggleShaded(finalRow, finalCol);
-
                                       }else{
                                           cell.setBackground(Background.EMPTY);
                                           cell.setStyle("-fx-border-color: black");
-                                          controller.toggleSpace(finalRow, finalCol);
                                       }
                                   }
                                   if (mouseEvent.getButton() == MouseButton.SECONDARY){
-                                      if (!controller.isEliminated(finalRow, finalCol)){
-                                          controller.toggleEliminated(finalRow, finalCol);
+                                      controller.toggleEliminated(finalRow, finalCol);
+                                      if (controller.isEliminated(finalRow, finalCol)){
                                           cell.setStyle("-fx-background-color: red");
                                       }else{
                                           cell.setBackground(Background.EMPTY);
                                           cell.setStyle("-fx-border-color: black");
-                                          controller.toggleSpace(finalRow, finalCol);
                                       }
                                   }
                               }
