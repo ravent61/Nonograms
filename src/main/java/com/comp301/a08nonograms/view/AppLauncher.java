@@ -46,6 +46,7 @@ public class AppLauncher extends Application {
           @Override
           public void update(Model model) {
               System.out.println("something changed");
+              System.out.println(model.isSolved());
           }
       };
       model.addObserver(observer);

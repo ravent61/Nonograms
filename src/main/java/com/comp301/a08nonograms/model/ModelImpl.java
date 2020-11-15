@@ -52,7 +52,67 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean isSolved() {
-        return false;
+        for (int row = 0; row < active_clues.getHeight(); row++){
+            int [] rowClues = getRowClues(row);
+            int alike_cells = 0;
+            int clue_idx = 0;
+            while (rowClues[clue_idx] == 0) {
+                clue_idx++;
+                if (clue_idx == rowClues.length) {
+                    break;
+                }
+            }
+            for (int col = 0; col < getWidth(); col++) {
+                if (clue_idx >= rowClues.length) {
+                    break;
+                }
+                if (board[row][col] == 1){
+                    alike_cells++;
+                }else{
+                    if (alike_cells > 0){
+                        if (alike_cells != rowClues[clue_idx]) {
+                            return false;
+                        }
+                        clue_idx++;
+                    }
+                    alike_cells = 0;
+                }
+            }
+            System.out.println(row);
+        }
+        for (int col = 0; col < active_clues.getWidth(); col++){
+            int [] colClues = getColClues(col);
+            int alike_cells = 0;
+            int clue_idx = 0;
+            while (colClues[clue_idx] == 0) {
+                clue_idx++;
+                if(clue_idx == colClues.length){
+                    break;
+                }
+            }
+            for (int row = 0; row < getHeight(); row++) {
+                if (clue_idx >= colClues.length) {
+                    break;
+                }
+                if (board[row][col] == 1){
+                    alike_cells++;
+                }else{
+                    if (alike_cells > 0){
+                        if (alike_cells != colClues[clue_idx]) {
+                            return false;
+                        }
+                        clue_idx++;
+                    }
+                    alike_cells = 0;
+                }
+            }
+            System.out.println(col);
+        }
+        //for (ModelObserver observers : observers){
+        //observers.update(this);
+        //}
+        System.out.println("SOLVED!");
+        return true;
     }
 
     @Override
