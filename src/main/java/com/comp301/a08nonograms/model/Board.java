@@ -19,6 +19,8 @@ public interface Board {
   /** Toggles whether the cell at the given location is eliminated with an "x" */
   void toggleCellEliminated(int row, int col);
 
+  void toggleCellSpace(int row, int col);
+
   /** Clears the board by marking all the cells blank */
   void clear();
 }

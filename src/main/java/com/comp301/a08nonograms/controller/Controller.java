@@ -21,6 +21,8 @@ public interface Controller {
   /** Toggles whether a specific cell is "eliminated" in the active puzzle board */
   void toggleEliminated(int row, int col);
 
+  void toggleSpace(int row, int col);
+
   /** Changes the currently active puzzle to the next puzzle in the library */
   void nextPuzzle();
 
