@@ -49,6 +49,7 @@ public class AppLauncher extends Application {
           }
       };
       model.addObserver(observer);
+      //this is a comment
       stage.show();
 
   }
