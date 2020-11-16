@@ -5,12 +5,14 @@ public class CluesImpl implements Clues {
   private final int width;
   private final int[][] rowClues;
   private final int[][] colClues;
+
   public CluesImpl(int[][] rowClues, int[][] colClues) {
     this.width = colClues.length;
     this.height = rowClues.length;
     this.rowClues = rowClues;
     this.colClues = colClues;
   }
+
   @Override
   public int getWidth() {
     return width;

@@ -35,7 +35,7 @@ public class AppLauncher extends Application {
           public void update(Model model1) {
             stage.setScene(new Scene(board.render()));
             stage.show();
-          }
+        }
     });
 
     stage.setScene(new Scene(board.render()));
@@ -44,9 +44,11 @@ public class AppLauncher extends Application {
 
   private class Board implements FXComponent {
     Controller controller;
+
     public Board(Controller controller) {
       this.controller = controller;
     }
+
     @Override
     public Parent render() {
       GridPane root = new GridPane();
@@ -60,10 +62,10 @@ public class AppLauncher extends Application {
             cell.setBackground(Background.EMPTY);
             cell.setText("X");
             cell.setStyle("-fx-border-color: black");
-          } else{
+          } else {
             if (controller.isShaded(row, col)){
               cell.setStyle("-fx-background-color: black");
-            } else{
+            } else {
               cell.setBackground(Background.EMPTY);
               cell.setStyle("-fx-border-color: black");
             }
