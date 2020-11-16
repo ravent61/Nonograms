@@ -156,6 +156,7 @@ public class AppLauncher extends Application {
       return root;
     }
   }
+
   private class Success extends Text {
     Text render(Controller control) {
       Text text = new Text();
@@ -173,12 +174,12 @@ public class AppLauncher extends Application {
       previous.setTranslateY(400);
       previous.setTranslateX(50);
       previous.setOnMouseClicked(
-        new EventHandler<MouseEvent>() {
-          @Override
-          public void handle(MouseEvent mouseEvent) {
-            control.prevPuzzle();
-          }
-      });
+          new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+              control.prevPuzzle();
+            }
+          });
       return previous;
     }
   }
@@ -188,12 +189,13 @@ public class AppLauncher extends Application {
       next.setText("Next Puzzle");
       next.setTranslateY(400);
       next.setTranslateX(175);
-      next.setOnMouseClicked(new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent mouseEvent) {
-          control.nextPuzzle();
-        }
-      });
+      next.setOnMouseClicked(
+          new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+              control.nextPuzzle();
+            }
+          });
       return next;
     }
   }
@@ -203,12 +205,13 @@ public class AppLauncher extends Application {
       reset.setText("Reset Puzzle");
       reset.setTranslateY(400);
       reset.setTranslateX(275);
-      reset.setOnMouseClicked(new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent mouseEvent) {
-          control.clearBoard();
-        }
-      });
+      reset.setOnMouseClicked(
+          new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+              control.clearBoard();
+            }
+          });
       return reset;
     }
   }
