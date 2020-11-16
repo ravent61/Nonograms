@@ -128,9 +128,8 @@ public class ModelImpl implements Model {
     } else {
       board[row][col] = 1;
     }
-    for (ModelObserver observers : observers){
+    for (ModelObserver observers : observers) {
       observers.update(this);
-
     }
   }
 
@@ -143,11 +142,11 @@ public class ModelImpl implements Model {
     }
     for (ModelObserver observers : observers) {
       observers.update(this);
-
     }
   }
+
   public void toggleCellSpace(int row, int col) {
-    board[row][col]= 0;
+    board[row][col] = 0;
     for (ModelObserver observers : observers) {
       observers.update(this);
     }
