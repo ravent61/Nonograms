@@ -167,6 +167,7 @@ public class AppLauncher extends Application {
       return text;
     }
   }
+
   private class Previous extends Button {
     Button render(Controller control) {
       Button previous = new Button();
@@ -183,6 +184,7 @@ public class AppLauncher extends Application {
       return previous;
     }
   }
+
   private class Next extends Button {
     Button render(Controller control) {
       Button next = new Button();
@@ -199,6 +201,7 @@ public class AppLauncher extends Application {
       return next;
     }
   }
+
   private class Reset extends Button {
     Button render(Controller control) {
       Button reset = new Button();
@@ -216,10 +219,11 @@ public class AppLauncher extends Application {
     }
   }
 
-  private class PuzzleIndex extends Text{
+  private class PuzzleIndex extends Text {
     Text render(Controller control) {
       Text puzzle_index = new Text();
-      puzzle_index.setText("Puzzle " + (control.getPuzzleIndex() + 1) + " of " + control.getPuzzleCount());
+      puzzle_index.setText(
+              "Puzzle " + (control.getPuzzleIndex() + 1) + " of " + control.getPuzzleCount());
       puzzle_index.setTranslateX(400);
       return puzzle_index;
     }
