@@ -30,14 +30,17 @@ public class AppLauncher extends Application {
       stage.setTitle("Raven's Nonograms!");
       Board board = new Board(controller);
       model.addObserver(new ModelObserver() {
+
           @Override
           public void update(Model model1) {
               stage.setScene(new Scene(board.render()));
               stage.show();
+
           }
       });
       stage.setScene(new Scene(board.render()));
       stage.show();
+
   }
 
   private class Board implements FXComponent {
