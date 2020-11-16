@@ -68,7 +68,12 @@ public class ControllerImpl implements Controller {
   @Override
   public void randPuzzle() {
     Random random = new Random();
-    model.setPuzzleIndex(random.nextInt(model.getPuzzleCount()));
+    int before = model.getPuzzleIndex();
+    int after = random.nextInt(model.getPuzzleCount());
+    while (after == before) {
+      after = random.nextInt(model.getPuzzleCount());
+    }
+    model.setPuzzleIndex(after);
   }
 
   @Override

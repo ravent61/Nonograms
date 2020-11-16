@@ -146,9 +146,11 @@ public class AppLauncher extends Application {
       Button previous = new Previous().render(controller);
       Button reset = new Reset().render(controller);
       Button next = new Next().render(controller);
+      Button random = new RandomPuzzle().render(controller);
       Text puzzle = new PuzzleIndex().render(controller);
 
       root.getChildren().add(previous);
+      root.getChildren().add(random);
       root.getChildren().add(next);
       root.getChildren().add(reset);
       root.getChildren().add(puzzle);
@@ -226,6 +228,23 @@ public class AppLauncher extends Application {
           "Puzzle " + (control.getPuzzleIndex() + 1) + " of " + control.getPuzzleCount());
       puzzle_index.setTranslateX(400);
       return puzzle_index;
+    }
+  }
+
+  private class RandomPuzzle extends Button {
+    Button render(Controller control) {
+      Button random = new Button();
+      random.setTranslateX(385);
+      random.setTranslateY(400);
+      random.setText("Random Puzzle");
+      random.setOnMouseClicked(
+          new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+              control.randPuzzle();
+            }
+          });
+      return random;
     }
   }
 }
