@@ -111,7 +111,7 @@ public class AppLauncher extends Application {
       Clues clues = controller.getClues();
       for (int row = 0; row < controller.getHeight(); row++) {
         Text clue = new Text();
-        int [] rowClue = clues.getRowClues(row);
+        int[] rowClue = clues.getRowClues(row);
         String string = Arrays.toString(rowClue);
         string = string.replace("[", "");
         string = string.replace("]", "");
@@ -121,9 +121,9 @@ public class AppLauncher extends Application {
         clue.setTranslateY((row * 30) + 20 + (10 * controller.getColCluesLength()));
         root.getChildren().add(clue);
       }
-      for(int col = 0; col < controller.getWidth(); col++) {
+      for (int col = 0; col < controller.getWidth(); col++) {
         Text clue = new Text();
-        int [] colClue = clues.getColClues(col);
+        int[] colClue = clues.getColClues(col);
         String string = Arrays.toString(colClue);
         string = string.replace("[", "");
         string = string.replace("]", "");
@@ -153,7 +153,7 @@ public class AppLauncher extends Application {
       root.getChildren().add(reset);
       root.getChildren().add(puzzle);
       root.setAlignment(Pos.TOP_LEFT);
-        return root;
+      return root;
     }
   }
   private class Success extends Text {
