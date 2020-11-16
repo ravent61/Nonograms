@@ -7,7 +7,7 @@ public class ModelImpl implements Model {
   private List<Clues> clues;
   private int puzzle_index;
   private Clues active_clues;
-  private int [][] board;
+  private int[][] board;
   private List<ModelObserver> observers;
 
   public ModelImpl(List<Clues> clues) {
@@ -52,7 +52,7 @@ public class ModelImpl implements Model {
   public boolean isSolved() {
     // check if rows match rows clues
     for (int row = 0; row < getHeight(); row++) {
-      int [] rowsClues = getRowClues(row);
+      int[] rowsClues = getRowClues(row);
       int alike_cells = 0;
       boolean max_cells = false;
       int sum_clues = 0;
@@ -66,21 +66,20 @@ public class ModelImpl implements Model {
             return false;
           }
         }
-      } else{
+      } else {
         int sum_cells = 0;
-          for (int col = 0; col < getWidth(); col++) {
-            if (board[row][col] == 1) {
-              sum_cells += board[row][col];
-
-            }
+        for (int col = 0; col < getWidth(); col++) {
+          if (board[row][col] == 1) {
+            sum_cells += board[row][col];
           }
-          if (sum_cells != sum_clues) {
-            return false;
-          }
+        }
+        if (sum_cells != sum_clues) {
+          return false;
+        }
       }
     }
     for (int col = 0; col < getWidth(); col++) {
-      int [] colClues = getColClues(col);
+      int[] colClues = getColClues(col);
       int sum_clues = 0;
       //check if any rows are 00
       for (int i = 0; i < colClues.length; i++) {
@@ -92,7 +91,7 @@ public class ModelImpl implements Model {
             return false;
           }
         }
-      }else{
+      } else {
         int sum_cells = 0;
         for (int row = 0; row < getHeight(); row++) {
           if (board[row][col] == 1) {
@@ -126,7 +125,7 @@ public class ModelImpl implements Model {
   public void toggleCellShaded(int row, int col) {
     if (board[row][col] == 1) {
       board[row][col] = 0;
-    }else{
+    } else {
       board[row][col] = 1;
     }
     for (ModelObserver observers : observers){
@@ -138,7 +137,7 @@ public class ModelImpl implements Model {
   public void toggleCellEliminated(int row, int col) {
     if (board[row][col] == -1) {
       board[row][col] = 0;
-    }else{
+    } else {
       board[row][col] = -1;
     }
     for (ModelObserver observers : observers) {
