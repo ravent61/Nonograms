@@ -7,7 +7,7 @@ import com.comp301.a08nonograms.PuzzleLibrary;
 import java.util.Random;
 
 public class ControllerImpl implements Controller {
-    Model model;
+  Model model;
 
     public ControllerImpl(Model model) {
         this.model = model;
