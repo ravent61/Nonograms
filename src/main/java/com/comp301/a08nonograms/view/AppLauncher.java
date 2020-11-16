@@ -25,87 +25,87 @@ public class AppLauncher extends Application {
 
   @Override
   public void start(Stage stage) {
-      Model model = new ModelImpl(PuzzleLibrary.create());
-      Controller controller = new ControllerImpl(model);
-      stage.setTitle("Raven's Nonograms!");
-      Board board = new Board(controller);
-      model.addObserver(new ModelObserver() {
+    Model model = new ModelImpl(PuzzleLibrary.create());
+    Controller controller = new ControllerImpl(model);
+    stage.setTitle("Raven's Nonograms!");
+    Board board = new Board(controller);
+    model.addObserver(new ModelObserver() {
 
 
-          @Override
-          public void update(Model model1) {
-              stage.setScene(new Scene(board.render()));
-              stage.show();
+        @Override
+        public void update(Model model1) {
+            stage.setScene(new Scene(board.render()));
+            stage.show();
 
-          }
-      });
-      stage.setScene(new Scene(board.render()));
-      stage.show();
+        }
+    });
+    stage.setScene(new Scene(board.render()));
+    stage.show();
 
   }
 
   private class Board implements FXComponent {
-      Controller controller;
-      public Board(Controller controller) {
-          this.controller = controller;
-      }
-      @Override
-      public Parent render() {
-          GridPane root = new GridPane();
-          root.setPrefSize(500, 500);
+    Controller controller;
+    public Board(Controller controller) {
+        this.controller = controller;
+    }
+    @Override
+    public Parent render() {
+      GridPane root = new GridPane();
+      root.setPrefSize(500, 500);
 
-          // Display gameboard
-          for (int col = 0; col < controller.getWidth(); col++) {
-              for (int row = 0; row < controller.getHeight(); row++) {
-                  Button cell = new Button();
-                  if (controller.isEliminated(row, col)) {
-                      cell.setBackground(Background.EMPTY);
-                      cell.setText("X");
-                      cell.setStyle("-fx-border-color: black");
-                  }else{
-                      if (controller.isShaded(row, col)){
-                          cell.setStyle("-fx-background-color: black");
-                      }else{
-                          cell.setBackground(Background.EMPTY);
-                          cell.setStyle("-fx-border-color: black");
-                      }
-                  }
-                  cell.setPrefSize(30, 30);
-                  int finalRow = row;
-                  int finalCol = col;
-                  cell.setOnMouseClicked(
-                          new EventHandler<MouseEvent>() {
-                              @Override
-                              public void handle(MouseEvent mouseEvent) {
-                                  if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                                      controller.toggleShaded(finalRow, finalCol);
-                                      if (controller.isShaded(finalRow, finalCol)){
-                                          cell.setStyle("-fx-background-color: black");
-                                          cell.setText("");
-                                      }else{
-                                          cell.setText("");
-                                          cell.setBackground(Background.EMPTY);
-                                          cell.setStyle("-fx-border-color: black");
-                                      }
-                                  }
-                                  if (mouseEvent.getButton() == MouseButton.SECONDARY){
-                                      controller.toggleEliminated(finalRow, finalCol);
-                                      if (controller.isEliminated(finalRow, finalCol)){
-                                          cell.setBackground(Background.EMPTY);
-                                          cell.setText("X");
-                                      }else{
-                                          cell.setText("");
-                                          cell.setBackground(Background.EMPTY);
-                                      }
-                                      cell.setStyle("-fx-border-color: black");
-                                  }
-                              }
-                          });
-                  cell.setTranslateX((col * 30) + 8 + (12.5 * controller.getRowCluesLength()));
-                  cell.setTranslateY((row * 30) + 20 + (10 * controller.getColCluesLength()));
-                  root.getChildren().add(cell);
+      // Display gameboard
+      for (int col = 0; col < controller.getWidth(); col++) {
+        for (int row = 0; row < controller.getHeight(); row++) {
+          Button cell = new Button();
+            if (controller.isEliminated(row, col)) {
+              cell.setBackground(Background.EMPTY);
+              cell.setText("X");
+              cell.setStyle("-fx-border-color: black");
+            }else{
+              if (controller.isShaded(row, col)){
+                cell.setStyle("-fx-background-color: black");
+              }else{
+                cell.setBackground(Background.EMPTY);
+                cell.setStyle("-fx-border-color: black");
               }
-          }
+            }
+          cell.setPrefSize(30, 30);
+          int finalRow = row;
+          int finalCol = col;
+          cell.setOnMouseClicked(
+            new EventHandler<MouseEvent>() {
+              @Override
+              public void handle(MouseEvent mouseEvent) {
+                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                  controller.toggleShaded(finalRow, finalCol);
+                  if (controller.isShaded(finalRow, finalCol)){
+                    cell.setStyle("-fx-background-color: black");
+                    cell.setText("");
+                  }else{
+                    cell.setText("");
+                    cell.setBackground(Background.EMPTY);
+                    cell.setStyle("-fx-border-color: black");
+                  }
+                }
+                if (mouseEvent.getButton() == MouseButton.SECONDARY){
+                  controller.toggleEliminated(finalRow, finalCol);
+                  if (controller.isEliminated(finalRow, finalCol)){
+                    cell.setBackground(Background.EMPTY);
+                    cell.setText("X");
+                  }else{
+                    cell.setText("");
+                    cell.setBackground(Background.EMPTY);
+                  }
+                  cell.setStyle("-fx-border-color: black");
+                }
+              }
+          });
+          cell.setTranslateX((col * 30) + 8 + (12.5 * controller.getRowCluesLength()));
+          cell.setTranslateY((row * 30) + 20 + (10 * controller.getColCluesLength()));
+          root.getChildren().add(cell);
+        }
+      }
 
           //Display Clues
           Clues clues = controller.getClues();
