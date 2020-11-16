@@ -31,6 +31,7 @@ public class AppLauncher extends Application {
       Board board = new Board(controller);
       model.addObserver(new ModelObserver() {
 
+
           @Override
           public void update(Model model1) {
               stage.setScene(new Scene(board.render()));
