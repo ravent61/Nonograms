@@ -81,7 +81,7 @@ public class ModelImpl implements Model {
     for (int col = 0; col < getWidth(); col++) {
       int[] colClues = getColClues(col);
       int sum_clues = 0;
-      //check if any rows are 00
+      // check if any rows are 00
       for (int i = 0; i < colClues.length; i++) {
         sum_clues += colClues[i];
       }
@@ -95,7 +95,7 @@ public class ModelImpl implements Model {
         int sum_cells = 0;
         for (int row = 0; row < getHeight(); row++) {
           if (board[row][col] == 1) {
-            sum_cells ++;
+            sum_cells++;
           }
         }
         if (sum_cells != sum_clues) {
@@ -130,6 +130,7 @@ public class ModelImpl implements Model {
     }
     for (ModelObserver observers : observers){
       observers.update(this);
+
     }
   }
 
@@ -142,6 +143,7 @@ public class ModelImpl implements Model {
     }
     for (ModelObserver observers : observers) {
       observers.update(this);
+
     }
   }
   public void toggleCellSpace(int row, int col) {
@@ -151,7 +153,7 @@ public class ModelImpl implements Model {
     }
   }
 
-    @Override
+  @Override
   public void clear() {
     for (int row = 0; row < getHeight(); row++) {
       for (int col = 0; col < getWidth(); col++) {
