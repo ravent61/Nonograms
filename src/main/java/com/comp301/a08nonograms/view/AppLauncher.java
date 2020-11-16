@@ -35,8 +35,8 @@ public class AppLauncher extends Application {
           public void update(Model model1) {
             stage.setScene(new Scene(board.render()));
             stage.show();
-        }
-    });
+          }
+        });
 
     stage.setScene(new Scene(board.render()));
     stage.show();
@@ -63,7 +63,7 @@ public class AppLauncher extends Application {
             cell.setText("X");
             cell.setStyle("-fx-border-color: black");
           } else {
-            if (controller.isShaded(row, col)){
+            if (controller.isShaded(row, col)) {
               cell.setStyle("-fx-background-color: black");
             } else {
               cell.setBackground(Background.EMPTY);
@@ -74,9 +74,9 @@ public class AppLauncher extends Application {
           int finalRow = row;
           int finalCol = col;
           cell.setOnMouseClicked(
-            new EventHandler<MouseEvent>() {
-              @Override
-              public void handle(MouseEvent mouseEvent) {
+              new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                   controller.toggleShaded(finalRow, finalCol);
                   if (controller.isShaded(finalRow, finalCol)){

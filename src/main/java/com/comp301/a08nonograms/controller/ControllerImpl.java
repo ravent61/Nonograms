@@ -49,7 +49,7 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void nextPuzzle() {
-    if ((model.getPuzzleIndex() + 1) > (model.getPuzzleCount() - 1)){
+    if ((model.getPuzzleIndex() + 1) > (model.getPuzzleCount() - 1)) {
       model.setPuzzleIndex(0);
     } else {
       model.setPuzzleIndex(model.getPuzzleIndex() + 1);
@@ -58,7 +58,7 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void prevPuzzle() {
-    if ((model.getPuzzleIndex() - 1) < 0){
+    if ((model.getPuzzleIndex() - 1) < 0) {
       model.setPuzzleIndex(model.getPuzzleCount() - 1);
     } else {
       model.setPuzzleIndex(model.getPuzzleIndex() - 1);
