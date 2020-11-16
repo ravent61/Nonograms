@@ -9,8 +9,6 @@ import java.util.Random;
 public class ControllerImpl implements Controller {
     Model model;
 
-
-
     public ControllerImpl(Model model) {
         this.model = model;
     }
