@@ -77,26 +77,26 @@ public class AppLauncher extends Application {
               new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                if (mouseEvent.getButton() == MouseButton.PRIMARY) {
-                  controller.toggleShaded(finalRow, finalCol);
-                  if (controller.isShaded(finalRow, finalCol)){
-                    cell.setStyle("-fx-background-color: black");
-                    cell.setText("");
-                  } else{
-                    cell.setText("");
-                    cell.setBackground(Background.EMPTY);
-                    cell.setStyle("-fx-border-color: black");
+                  if (mouseEvent.getButton() == MouseButton.PRIMARY) {
+                    controller.toggleShaded(finalRow, finalCol);
+                    if (controller.isShaded(finalRow, finalCol)){
+                      cell.setStyle("-fx-background-color: black");
+                      cell.setText("");
+                    } else{
+                      cell.setText("");
+                      cell.setBackground(Background.EMPTY);
+                      cell.setStyle("-fx-border-color: black");
+                    }
                   }
-                }
-                if (mouseEvent.getButton() == MouseButton.SECONDARY){
-                  controller.toggleEliminated(finalRow, finalCol);
-                  if (controller.isEliminated(finalRow, finalCol)){
-                    cell.setBackground(Background.EMPTY);
-                    cell.setText("X");
-                  } else{
-                    cell.setText("");
-                    cell.setBackground(Background.EMPTY);
-                  }
+                  if (mouseEvent.getButton() == MouseButton.SECONDARY){
+                    controller.toggleEliminated(finalRow, finalCol);
+                    if (controller.isEliminated(finalRow, finalCol)){
+                      cell.setBackground(Background.EMPTY);
+                      cell.setText("X");
+                    } else {
+                      cell.setText("");
+                      cell.setBackground(Background.EMPTY);
+                    }
                   cell.setStyle("-fx-border-color: black");
                 }
               }
