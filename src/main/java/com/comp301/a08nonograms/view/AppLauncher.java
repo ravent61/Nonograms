@@ -223,7 +223,7 @@ public class AppLauncher extends Application {
     Text render(Controller control) {
       Text puzzle_index = new Text();
       puzzle_index.setText(
-              "Puzzle " + (control.getPuzzleIndex() + 1) + " of " + control.getPuzzleCount());
+          "Puzzle " + (control.getPuzzleIndex() + 1) + " of " + control.getPuzzleCount());
       puzzle_index.setTranslateX(400);
       return puzzle_index;
     }
