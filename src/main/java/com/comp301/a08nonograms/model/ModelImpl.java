@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ModelImpl implements Model{
+public class ModelImpl implements Model {
     private List<Clues> clues;
     private int puzzle_index;
     private Clues active_clues;
@@ -18,6 +18,7 @@ public class ModelImpl implements Model{
         this.active_clues = clues.get(0);
         this.board = new int [active_clues.getHeight()] [active_clues.getWidth()];
         this.observers = new ArrayList<ModelObserver>();
+
     }
 
     @Override
