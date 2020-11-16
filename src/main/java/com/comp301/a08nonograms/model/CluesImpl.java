@@ -10,6 +10,7 @@ public class CluesImpl implements Clues {
         this.height = rowClues.length;
         this.rowClues = rowClues;
         this.colClues = colClues;
+
     }
     @Override
     public int getWidth() {
