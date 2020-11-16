@@ -30,13 +30,14 @@ public class AppLauncher extends Application {
     stage.setTitle("Raven's Nonograms!");
     Board board = new Board(controller);
     model.addObserver(
-            new ModelObserver() {
-        @Override
-        public void update(Model model1) {
+        new ModelObserver() {
+          @Override
+          public void update(Model model1) {
             stage.setScene(new Scene(board.render()));
             stage.show();
-        }
+          }
     });
+
     stage.setScene(new Scene(board.render()));
     stage.show();
   }
@@ -59,10 +60,10 @@ public class AppLauncher extends Application {
             cell.setBackground(Background.EMPTY);
             cell.setText("X");
             cell.setStyle("-fx-border-color: black");
-          }else{
+          } else{
             if (controller.isShaded(row, col)){
               cell.setStyle("-fx-background-color: black");
-            }else{
+            } else{
               cell.setBackground(Background.EMPTY);
               cell.setStyle("-fx-border-color: black");
             }
@@ -79,7 +80,7 @@ public class AppLauncher extends Application {
                   if (controller.isShaded(finalRow, finalCol)){
                     cell.setStyle("-fx-background-color: black");
                     cell.setText("");
-                  }else{
+                  } else{
                     cell.setText("");
                     cell.setBackground(Background.EMPTY);
                     cell.setStyle("-fx-border-color: black");
@@ -90,7 +91,7 @@ public class AppLauncher extends Application {
                   if (controller.isEliminated(finalRow, finalCol)){
                     cell.setBackground(Background.EMPTY);
                     cell.setText("X");
-                  }else{
+                  } else{
                     cell.setText("");
                     cell.setBackground(Background.EMPTY);
                   }
