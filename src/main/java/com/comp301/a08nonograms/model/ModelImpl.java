@@ -43,6 +43,7 @@ public class ModelImpl implements Model{
     @Override
     public void addObserver(ModelObserver observer) {
         observers.add(observer);
+        observer.update(this);
     }
 
     @Override

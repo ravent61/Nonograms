@@ -40,4 +40,13 @@ public interface Controller {
 
   /** Getter method for the total number of puzzles in the puzzle library */
   int getPuzzleCount();
+
+  int getHeight();
+
+  int getWidth();
+
+  int getRowCluesLength();
+
+  int getColCluesLength();
+
 }

@@ -85,4 +85,20 @@ public class ControllerImpl implements Controller {
     public int getPuzzleCount() {
         return model.getPuzzleCount();
     }
+
+    public int getHeight() {
+        return model.getHeight();
+    }
+
+    public int getWidth() {
+        return model.getWidth();
+    }
+
+    public int getRowCluesLength () {
+        return model.getRowCluesLength();
+    }
+
+    public int getColCluesLength() {
+        return model.getColCluesLength();
+    }
 }
