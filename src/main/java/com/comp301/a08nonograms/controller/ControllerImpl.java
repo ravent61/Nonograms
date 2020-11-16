@@ -94,7 +94,7 @@ public class ControllerImpl implements Controller {
         return model.getWidth();
     }
 
-    public int getRowCluesLength () {
+    public int getRowCluesLength() {
         return model.getRowCluesLength();
     }
 
