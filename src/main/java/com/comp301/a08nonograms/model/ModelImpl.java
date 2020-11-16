@@ -7,16 +7,15 @@ public class ModelImpl implements Model {
   private List<Clues> clues;
   private int puzzle_index;
   private Clues active_clues;
-  private int [] [] board;
+  private int [][] board;
   private List<ModelObserver> observers;
 
   public ModelImpl(List<Clues> clues) {
     this.clues = clues;
     this.puzzle_index = 0;
     this.active_clues = clues.get(0);
-    this.board = new int [active_clues.getHeight()] [active_clues.getWidth()];
+    this.board = new int[active_clues.getHeight()][active_clues.getWidth()];
     this.observers = new ArrayList<ModelObserver>();
-
   }
 
   @Override
@@ -33,7 +32,7 @@ public class ModelImpl implements Model {
   public void setPuzzleIndex(int index) {
     puzzle_index = index;
     active_clues = clues.get(puzzle_index);
-    board = new int [active_clues.getHeight()] [active_clues.getWidth()];
+    board = new int[active_clues.getHeight()][active_clues.getWidth()];
     for (ModelObserver observer : observers) {
       observer.update(this);
     }
@@ -51,13 +50,13 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-    //check if rows match rows clues
+    // check if rows match rows clues
     for (int row = 0; row < getHeight(); row++) {
       int [] rowsClues = getRowClues(row);
       int alike_cells = 0;
       boolean max_cells = false;
       int sum_clues = 0;
-      //check if any rows are 00
+      // check if any rows are 00
       for (int i = 0; i < rowsClues.length; i++) {
         sum_clues += rowsClues[i];
       }
@@ -67,11 +66,12 @@ public class ModelImpl implements Model {
             return false;
           }
         }
-      }else{
+      } else{
         int sum_cells = 0;
           for (int col = 0; col < getWidth(); col++) {
             if (board[row][col] == 1) {
               sum_cells += board[row][col];
+
             }
           }
           if (sum_cells != sum_clues) {
