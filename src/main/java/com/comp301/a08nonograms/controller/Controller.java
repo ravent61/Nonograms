@@ -48,5 +48,4 @@ public interface Controller {
   int getRowCluesLength();
 
   int getColCluesLength();
-
 }
