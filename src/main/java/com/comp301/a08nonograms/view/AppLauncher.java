@@ -9,6 +9,7 @@ import com.comp301.a08nonograms.model.ModelImpl;
 import com.comp301.a08nonograms.model.ModelObserver;
 import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,9 +17,11 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
+import java.awt.*;
 import java.util.Arrays;
 
 public class AppLauncher extends Application {
@@ -53,6 +56,7 @@ public class AppLauncher extends Application {
     public Parent render() {
       GridPane root = new GridPane();
       root.setPrefSize(500, 500);
+      root.setStyle("-fx-background-color: pink");
 
       // Display gameboard
       for (int col = 0; col < controller.getWidth(); col++) {
@@ -64,7 +68,7 @@ public class AppLauncher extends Application {
             cell.setStyle("-fx-border-color: black");
           } else {
             if (controller.isShaded(row, col)) {
-              cell.setStyle("-fx-background-color: black");
+              cell.setStyle("-fx-background-color: #e75480");
             } else {
               cell.setBackground(Background.EMPTY);
               cell.setStyle("-fx-border-color: black");
@@ -80,7 +84,7 @@ public class AppLauncher extends Application {
                   if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                     controller.toggleShaded(finalRow, finalCol);
                     if (controller.isShaded(finalRow, finalCol)) {
-                      cell.setStyle("-fx-background-color: black");
+                      cell.setStyle("-fx-background-color: #e75480");
                       cell.setText("");
                     } else {
                       cell.setText("");
@@ -101,7 +105,7 @@ public class AppLauncher extends Application {
                   }
                 }
               });
-          cell.setTranslateX((col * 30) + 8 + (12.5 * controller.getRowCluesLength()));
+          cell.setTranslateX((col * 30) + 30 + (10 * controller.getRowCluesLength()));
           cell.setTranslateY((row * 30) + 20 + (10 * controller.getColCluesLength()));
           root.getChildren().add(cell);
         }
@@ -119,6 +123,7 @@ public class AppLauncher extends Application {
         string = string.replace("", " ");
         clue.setText(string);
         clue.setTranslateY((row * 30) + 20 + (10 * controller.getColCluesLength()));
+        clue.setFont(Font.font("verdana", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 12));
         root.getChildren().add(clue);
       }
       for (int col = 0; col < controller.getWidth(); col++) {
@@ -131,9 +136,10 @@ public class AppLauncher extends Application {
         string = string.replace(" ", "");
         clue.setText(string);
         clue.setLineSpacing(1);
-        clue.setTranslateX((col * 30) + 20 + (12.5 * controller.getRowCluesLength()));
+        clue.setTranslateX((col * 30) + 35 + (12.5 * controller.getRowCluesLength()));
         clue.setTranslateY(10);
         clue.setWrappingWidth(1);
+        clue.setFont(Font.font("verdana", FontWeight.EXTRA_BOLD, FontPosture.REGULAR, 12));
         root.getChildren().add(clue);
       }
 
@@ -173,6 +179,7 @@ public class AppLauncher extends Application {
   private class Previous extends Button {
     Button render(Controller control) {
       Button previous = new Button();
+      previous.setStyle("-fx-background-color: #e75480");
       previous.setText("Previous Puzzle");
       previous.setTranslateY(400);
       previous.setTranslateX(50);
@@ -190,6 +197,7 @@ public class AppLauncher extends Application {
   private class Next extends Button {
     Button render(Controller control) {
       Button next = new Button();
+      next.setStyle("-fx-background-color: #e75480");
       next.setText("Next Puzzle");
       next.setTranslateY(400);
       next.setTranslateX(175);
@@ -207,6 +215,7 @@ public class AppLauncher extends Application {
   private class Reset extends Button {
     Button render(Controller control) {
       Button reset = new Button();
+      reset.setStyle("-fx-background-color: #e75480");
       reset.setText("Reset Puzzle");
       reset.setTranslateY(400);
       reset.setTranslateX(275);
@@ -236,6 +245,7 @@ public class AppLauncher extends Application {
       Button random = new Button();
       random.setTranslateX(385);
       random.setTranslateY(400);
+      random.setStyle("-fx-background-color: #e75480");
       random.setText("Random Puzzle");
       random.setOnMouseClicked(
           new EventHandler<MouseEvent>() {
